@@ -1,0 +1,85 @@
+Задача: Дан массив {3, 6, 2, 8, 5, 10}. Разделите на чётные и нечётные.
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int arr[] = {3, 6, 2, 8, 5, 10};
+    vector<int> even, odd;
+
+    for(int num : arr) {
+        if(num % 2 == 0) even.push_back(num);
+        else odd.push_back(num);
+    }
+
+    cout << "Чётные: ";
+    for(int num : even) cout << num << " ";
+    cout << "\nНечётные: ";
+    for(int num : odd) cout << num << " ";
+}
+
+
+#include <iostream>
+#include <stack>
+using namespace std;
+
+int main() {
+    stack<char> s;
+    s.push('a');
+    s.push('b');
+    s.push('c');
+
+    cout << "Стек до извлечения: ";
+    stack<char> temp = s;
+    while(!temp.empty()) { cout << temp.top() << " "; temp.pop(); }
+
+    char top = s.top();
+    s.pop();
+    cout << "\nИзвлечённый элемент: " << top << endl;
+
+    cout << "Стек после извлечения: ";
+    temp = s;
+    while(!temp.empty()) { cout << temp.top() << " "; temp.pop(); }
+}
+
+
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+class LinkedList {
+public:
+    Node* head;
+    LinkedList() { head = nullptr; }
+
+    void append(int data) {
+        Node* newNode = new Node{data, nullptr};
+        if(!head) { head = newNode; return; }
+        Node* last = head;
+        while(last->next) last = last->next;
+        last->next = newNode;
+    }
+
+    void printList() {
+        Node* current = head;
+        while(current) {
+            cout << current->data << " ";
+            current = current->next;
+        }
+    }
+};
+
+int main() {
+    LinkedList ll;
+    ll.append(1);
+    ll.append(2);
+    ll.append(3);
+    ll.append(4);
+    ll.printList();
+}
