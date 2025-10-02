@@ -1,80 +1,62 @@
-Задача: Дан массив чисел {3, 6, 2, 8, 5, 10}. Разделите на чётные и нечётные.
+Пример 1.
+Кучи
 
-```java
-import java.util.ArrayList;
+#include <iostream>
+#include <queue>
+using namespace std;
 
-public class ArrayExample {
-    public static void main(String[] args) {
-        int[] arr = {3, 6, 2, 8, 5, 10};
-        ArrayList<Integer> even = new ArrayList<>();
-        ArrayList<Integer> odd = new ArrayList<>();
+int main() {
+    priority_queue<int> heap;
 
-        for (int num : arr) {
-            if (num % 2 == 0) even.add(num);
-            else odd.add(num);
-        }
+    heap.push(10);
+    heap.push(3);
+    heap.push(7);
 
-        System.out.println("Чётные: " + even);
-        System.out.println("Нечётные: " + odd);
-    }
+    cout << "Максимум: " << heap.top() << endl; // корень кучи
+    heap.pop();
+
+    return 0;
 }
 
 
-Задача: Создайте стек, добавьте 'a', 'b', 'c', извлеките верхний элемент.
+Пример 2.
+Хип(min-heap через компаратор)
 
-import java.util.Stack;
+#include <iostream>
+#include <queue>
+#include <vector>
+using namespace std;
 
-public class StackExample {
-    public static void main(String[] args) {
-        Stack<String> stack = new Stack<>();
-        stack.push("a");
-        stack.push("b");
-        stack.push("c");
+int main() {
+    priority_queue<int, vector<int>, greater<int>> min_heap;
 
-        System.out.println("Стек до извлечения: " + stack);
+    min_heap.push(20);
+    min_heap.push(5);
+    min_heap.push(15);
 
-        String top = stack.pop();
-        System.out.println("Извлечённый элемент: " + top);
-        System.out.println("Стек после извлечения: " + stack);
-    }
+    cout << "Минимум: " << min_heap.top() << endl;
+    min_heap.pop();
+
+    return 0;
 }
 
 
-Задача: Создайте связный список с элементами 1, 2, 3, добавьте 4 в конец.
+Пример 3.
+Хеш-таблица
 
-class Node {
-    int data;
-    Node next;
-    Node(int data) { this.data = data; this.next = null; }
-}
+#include <iostream>
+#include <unordered_map>
+using namespace std;
 
-class LinkedList {
-    Node head;
+int main() {
+    unordered_map<string, int> hash_table;
 
-    void append(int data) {
-        Node newNode = new Node(data);
-        if(head == null) { head = newNode; return; }
-        Node last = head;
-        while(last.next != null) last = last.next;
-        last.next = newNode;
-    }
+    hash_table["apple"] = 10;
+    hash_table["banana"] = 20;
 
-    void printList() {
-        Node current = head;
-        while(current != null) {
-            System.out.print(current.data + " ");
-            current = current.next;
-        }
-    }
-}
+    cout << "apple: " << hash_table["apple"] << endl;
 
-public class LinkedListExample {
-    public static void main(String[] args) {
-        LinkedList ll = new LinkedList();
-        ll.append(1);
-        ll.append(2);
-        ll.append(3);
-        ll.append(4);
-        ll.printList();
-    }
+    hash_table.erase("banana");
+
+    return 0;
 }
