@@ -1,1 +1,63 @@
+Пример 1.
+Кучи
+
+#include <iostream>
+#include <queue>
+using namespace std;
+
+int main() {
+    priority_queue<int> heap;
+
+    heap.push(10);
+    heap.push(3);
+    heap.push(7);
+
+    cout << "Максимум: " << heap.top() << endl; // корень кучи
+    heap.pop();
+
+    return 0;
+}
+
+
+Пример 2.
+Хип(min-heap через компаратор)
+
+#include <iostream>
+#include <queue>
+#include <vector>
+using namespace std;
+
+int main() {
+    priority_queue<int, vector<int>, greater<int>> min_heap;
+
+    min_heap.push(20);
+    min_heap.push(5);
+    min_heap.push(15);
+
+    cout << "Минимум: " << min_heap.top() << endl;
+    min_heap.pop();
+
+    return 0;
+}
+
+
+Пример 3.
+Хеш-таблица
+
+#include <iostream>
+#include <unordered_map>
+using namespace std;
+
+int main() {
+    unordered_map<string, int> hash_table;
+
+    hash_table["apple"] = 10;
+    hash_table["banana"] = 20;
+
+    cout << "apple: " << hash_table["apple"] << endl;
+
+    hash_table.erase("banana");
+
+    return 0;
+}
 
