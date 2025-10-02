@@ -1,60 +1,58 @@
-Задача: Дан массив чисел [3, 6, 2, 8, 5, 10]. Разделите его на два массива: чётные и нечётные числа.
+Пример 1.
+Кучи
 
-```python
-arr = [3, 6, 2, 8, 5, 10]
+import heapq
 
-even = [x for x in arr if x % 2 == 0]
-odd = [x for x in arr if x % 2 != 0]
+# создаём пустую кучу
+heap = []
 
-print("Чётные:", even)
-print("Нечётные:", odd)
+# добавляем элементы
+heapq.heappush(heap, 10)
+heapq.heappush(heap, 3)
+heapq.heappush(heap, 7)
 
+# извлечение минимального элемента
+min_elem = heapq.heappop(heap)
 
-Задача: Создайте стек, добавьте элементы 'a', 'b', 'c', извлеките верхний элемент и выведите состояние стека.
-
-stack = []
-stack.append('a')
-stack.append('b')
-stack.append('c')
-
-print("Стек до извлечения:", stack)
-
-top = stack.pop()
-print("Извлечённый элемент:", top)
-print("Стек после извлечения:", stack)
+print("Куча:", heap)
+print("Минимальный элемент:", min_elem)
 
 
-Задача: Создайте связный список с элементами 1, 2, 3, добавьте элемент 4 в конец, выведите список.
+Пример 2.
+Хип
 
-class Node:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
+import heapq
 
-class LinkedList:
-    def __init__(self):
-        self.head = None
+# список преобразуем в кучу
+data = [20, 5, 15, 22, 7]
+heapq.heapify(data)   # превращаем список в кучу (min-heap)
 
-    def append(self, data):
-        new_node = Node(data)
-        if not self.head:
-            self.head = new_node
-            return
-        last = self.head
-        while last.next:
-            last = last.next
-        last.next = new_node
+# доступ к корню (минимальному элементу)
+root = data[0]
 
-    def print_list(self):
-        current = self.head
-        while current:
-            print(current.data, end=" ")
-            current = current.next
+# добавление и удаление
+heapq.heappush(data, 2)
+heapq.heappop(data)
 
-ll = LinkedList()
-ll.append(1)
-ll.append(2)
-ll.append(3)
-ll.append(4)
+print("Хип:", data)
+print("Корень:", root)
 
-ll.print_list()
+
+Пример 3.
+Хеш-таблица
+
+# создаём хеш-таблицу (словарь)
+hash_table = {}
+
+# добавление элементов
+hash_table["apple"] = 10
+hash_table["banana"] = 20
+
+# доступ по ключу
+value = hash_table["apple"]
+
+# удаление элемента
+del hash_table["banana"]
+
+print("Хеш-таблица:", hash_table)
+print("Значение по ключу 'apple':", value)
